@@ -1,11 +1,13 @@
 import type { Core } from '@strapi/strapi';
 
-const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Server => ({
+const config = ({ env }: { env: Core.Env }) => ({
   host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
+  port: env.int('PORT', 8080),
   app: {
     keys: env.array('APP_KEYS'),
   },
+  url: env('PUBLIC_URL', ''),
+  proxy: true,
 });
 
 export default config;
