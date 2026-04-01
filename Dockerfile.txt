@@ -1,0 +1,26 @@
+# Используем официальный Node образ (alpine — легковесный)
+FROM node:20-alpine
+
+# Создаём рабочую директорию
+WORKDIR /app
+
+# Копируем только package.json и lock-файл сначала
+# Это ускоряет сборку за счёт кэширования слоёв
+COPY package.json package-lock.json ./
+
+# Устанавливаем зависимости строго по lock-файлу, без dev-зависимостей
+RUN npm ci --omit=dev
+
+# Копируем весь проект
+COPY . .
+
+# Указываем переменные окружения для Strapi (опционально)
+ENV NODE_ENV=production
+ENV DATABASE_CLIENT=sqlite
+ENV DATABASE_FILENAME=.tmp/data.db
+
+# Открываем порт Strapi
+EXPOSE 1337
+
+# Старт Strapi через npm напрямую
+CMD ["npm", "run", "start"]
