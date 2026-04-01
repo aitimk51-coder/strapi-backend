@@ -1,6 +1,7 @@
-import type { Core } from '@strapi/strapi';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 
-const config = ({ env }: { env: Core.Env }) => ({
+const config = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 8080),
   app: {
@@ -10,4 +11,4 @@ const config = ({ env }: { env: Core.Env }) => ({
   proxy: true,
 });
 
-export default config;
+exports.default = config;
