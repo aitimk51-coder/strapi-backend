@@ -43,4 +43,7 @@
     "@strapi/content-type-builder": {
       "zod": "^3.25.76"
     },
-    "zod": "^3.25.76
+    "zod": "^3.25.76",
+    "date-fns": "2.30.0"
+  }
+}
