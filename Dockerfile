@@ -6,7 +6,7 @@ RUN npm install --legacy-peer-deps
 COPY . . 
 RUN npm run build 
 ENV NODE_ENV=production 
-ENV PORT=1337 
+ENV PORT=8080 
 ENV HOST=0.0.0.0 
-EXPOSE 1337 
+EXPOSE 8080 
 CMD ["npm", "start"] 
