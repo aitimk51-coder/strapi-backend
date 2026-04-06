@@ -1,8 +1,8 @@
-[build]
-builder = "DOCKERFILE"
-watchPatterns = ["package.json", "Dockerfile", "src/**", "config/**"]
-
-[deploy]
-healthcheckPath = "/"
-healthcheckTimeout = 300
-restartPolicyType = "never"
+[build] 
+builder = "DOCKERFILE" 
+ 
+[deploy] 
+healthcheckPath = "/" 
+healthcheckTimeout = 600 
+restartPolicyType = "never" 
+startCommand = "sh -c \"echo '=== STARTING ===' && ls -la /app/dist && node --max-old-space-size=480 node_modules/.bin/strapi start || echo '=== FAILED ==='\"" 
